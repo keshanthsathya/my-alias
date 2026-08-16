@@ -93,194 +93,652 @@
       font-family: var(--mono);
     }
 
-    .section-label,<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0a0f">
-  <title>[YOUR_NAME] — Operator Profile</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0a0f;
-      --surface: #111118;
-      --cyan: #00e5ff;
-      --green: #39ff14;
-      --red: #ff2200;
-      --text: #e8e8e8;
-      --muted: #5a5a7a;
-      --border: rgba(0, 229, 255, 0.2);
-      --mono: "Share Tech Mono", monospace;
-      --display: "Rajdhani", sans-serif;
+    .section-label,
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 34px;
+      color: var(--cyan);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      min-width: 320px;
-      overflow-x: hidden;
-      color: var(--text);
-      background: var(--bg);
-      font-family: var(--display);
+    .section-label::after,
+    .eyebrow::after {
+      width: 58px;
+      height: 1px;
+      content: "";
+      background: linear-gradient(90deg, var(--cyan), transparent);
     }
 
-    button, input, textarea { font: inherit; }
+    .hero {
+      display: grid;
+      min-height: 100svh;
+      padding: 48px 24px;
+      overflow: hidden;
+      place-items: center;
+    }
 
-    button { cursor: pointer; }
+    #particles-js { position: absolute; inset: 0; z-index: -2; }
 
-    a { color: inherit; text-decoration: none; }
-
-    .ambient-grid,
-    .scanlines {
-      position: fixed;
+    .hero::before {
+      position: absolute;
       inset: 0;
-      z-index: 50;
+      z-index: -1;
+      content: "";
+      background:
+        radial-gradient(circle at 50% 45%, rgba(0, 229, 255, 0.08), transparent 38%),
+        linear-gradient(90deg, var(--bg) 0%, transparent 22%, transparent 78%, var(--bg) 100%),
+        linear-gradient(0deg, var(--bg), transparent 28%, transparent 74%, var(--bg));
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(0, 229, 255, 0.1);
+      clip-path: polygon(0 18px, 18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px));
       pointer-events: none;
     }
 
-    .ambient-grid {
-      z-index: 0;
-      opacity: 0.09;
-      background-image:
-        linear-gradient(30deg, transparent 24%, rgba(0, 229, 255, 0.5) 25%, rgba(0, 229, 255, 0.5) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.5) 75%, rgba(0, 229, 255, 0.5) 76%, transparent 77%),
-        linear-gradient(150deg, transparent 24%, rgba(0, 229, 255, 0.5) 25%, rgba(0, 229, 255, 0.5) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.5) 75%, rgba(0, 229, 255, 0.5) 76%, transparent 77%),
-        linear-gradient(90deg, transparent 24%, rgba(0, 229, 255, 0.3) 25%, rgba(0, 229, 255, 0.3) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.3) 75%, rgba(0, 229, 255, 0.3) 76%, transparent 77%);
-      background-size: 44px 76px;
-      background-position: 0 0, 0 0, 22px 38px;
-      mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+    .hero-frame::before,
+    .hero-frame::after {
+      position: absolute;
+      width: 78px;
+      height: 1px;
+      content: "";
+      background: var(--cyan);
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
     }
 
-    .scanlines {
-      opacity: 0.12;
-      background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(232, 232, 232, 0.14) 4px);
-      mix-blend-mode: screen;
+    .hero-frame::before { top: 0; left: 36px; }
+    .hero-frame::after { right: 36px; bottom: 0; }
+
+    .hero-content {
+      width: min(100%, 980px);
+      text-align: center;
     }
 
-    .page { position: relative; z-index: 1; }
+    .hero .eyebrow { justify-content: center; margin-bottom: 14px; }
 
-    .section {
+    .operator-name {
       position: relative;
-      width: min(1120px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 126px 0;
-    }
-
-    .section-label,
-    .eyebrow,
-    .terminal-copy,
-    .status,
-    .form-label,
-    .skill-name,
-    .skill-percent,
-    .project-op,
-    .tag,
-    .stat-label,
-    .stat-value,
-    .project-link,
-    .boot-lines,
-    .boot-kicker {
-      font-family: var(--mono);
-    }
-
-    .section-label,<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0a0f">
-  <title>[YOUR_NAME] — Operator Profile</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0a0f;
-      --surface: #111118;
-      --cyan: #00e5ff;
-      --green: #39ff14;
-      --red: #ff2200;
-      --text: #e8e8e8;
-      --muted: #5a5a7a;
-      --border: rgba(0, 229, 255, 0.2);
-      --mono: "Share Tech Mono", monospace;
-      --display: "Rajdhani", sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
+      display: inline-block;
       margin: 0;
-      min-width: 320px;
-      overflow-x: hidden;
       color: var(--text);
-      background: var(--bg);
-      font-family: var(--display);
+      font-size: clamp(3.25rem, 10vw, 8.25rem);
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      line-height: 0.88;
+      text-transform: uppercase;
+      text-shadow: 0 0 28px rgba(0, 229, 255, 0.16);
     }
 
-    button, input, textarea { font: inherit; }
-
-    button { cursor: pointer; }
-
-    a { color: inherit; text-decoration: none; }
-
-    .ambient-grid,
-    .scanlines {
-      position: fixed;
+    .operator-name::before,
+    .operator-name::after {
+      position: absolute;
       inset: 0;
-      z-index: 50;
+      display: block;
+      content: attr(data-text);
+      opacity: 0;
       pointer-events: none;
     }
 
-    .ambient-grid {
-      z-index: 0;
-      opacity: 0.09;
-      background-image:
-        linear-gradient(30deg, transparent 24%, rgba(0, 229, 255, 0.5) 25%, rgba(0, 229, 255, 0.5) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.5) 75%, rgba(0, 229, 255, 0.5) 76%, transparent 77%),
-        linear-gradient(150deg, transparent 24%, rgba(0, 229, 255, 0.5) 25%, rgba(0, 229, 255, 0.5) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.5) 75%, rgba(0, 229, 255, 0.5) 76%, transparent 77%),
-        linear-gradient(90deg, transparent 24%, rgba(0, 229, 255, 0.3) 25%, rgba(0, 229, 255, 0.3) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.3) 75%, rgba(0, 229, 255, 0.3) 76%, transparent 77%);
-      background-size: 44px 76px;
-      background-position: 0 0, 0 0, 22px 38px;
-      mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+    .operator-name::before { color: var(--cyan); transform: translate(-3px, 0); }
+    .operator-name::after { color: var(--red); transform: translate(3px, 0); }
+
+    .operator-name:hover::before,
+    .operator-name:hover::after { opacity: 0.7; animation: glitch 380ms steps(2, end) infinite; }
+    .operator-name:hover::after { animation-delay: 80ms; }
+
+    @keyframes glitch {
+      0%, 100% { clip-path: inset(0 0 82% 0); }
+      20% { clip-path: inset(37% 0 47% 0); }
+      40% { clip-path: inset(74% 0 7% 0); }
+      60% { clip-path: inset(12% 0 63% 0); }
+      80% { clip-path: inset(51% 0 20% 0); }
     }
 
-    .scanlines {
-      opacity: 0.12;
-      background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(232, 232, 232, 0.14) 4px);
-      mix-blend-mode: screen;
-    }
-
-    .page { position: relative; z-index: 1; }
-
-    .section {
-      position: relative;
-      width: min(1120px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 126px 0;
-    }
-
-    .section-label,
-    .eyebrow,
-    .terminal-copy,
-    .status,
-    .form-label,
-    .skill-name,
-    .skill-percent,
-    .project-op,
-    .tag,
-    .stat-label,
-    .stat-value,
-    .project-link,
-    .boot-lines,
-    .boot-kicker {
+    .role-line {
+      min-height: 2.2rem;
+      margin: 27px 0 12px;
+      color: var(--green);
       font-family: var(--mono);
+      font-size: clamp(0.81rem, 2vw, 1rem);
+      letter-spacing: 0.13em;
     }
 
-    .section-label,
+    .role-line::before { content: "> "; color: var(--cyan); }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 0.62em;
+      height: 1.15em;
+      margin-left: 4px;
+      vertical-align: -0.21em;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: blink 800ms step-end infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .location {
+      margin: 0 0 31px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+    }
+
+    .location::before { color: var(--cyan); content: "◈ "; }
+
+    .hud-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 13px 20px;
+      overflow: hidden;
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      background: rgba(0, 229, 255, 0.04);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      transition: color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .hud-button::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: var(--cyan);
+      transform: translateX(-102%);
+      transition: transform 200ms ease;
+      z-index: -1;
+    }
+
+    .hud-button:hover,
+    .hud-button:focus-visible { color: var(--bg); box-shadow: 0 0 22px rgba(0, 229, 255, 0.35); transform: translateY(-2px); }
+    .hud-button:hover::before,
+    .hud-button:focus-visible::before { transform: translateX(0); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(34px, 7vw, 90px);
+      align-items: center;
+    }
+
+    .photo-frame {
+      position: relative;
+      display: grid;
+      min-height: 360px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(0, 229, 255, 0.07), transparent 42%),
+        var(--surface);
+      place-items: center;
+    }
+
+    .photo-frame::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.22), transparent);
+      transform: translateY(-110%);
+      animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan { to { transform: translateY(110%); } }
+
+    .photo-placeholder {
+      position: relative;
+      z-index: 1;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+
+    .corner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-color: var(--cyan);
+      border-style: solid;
+      z-index: 2;
+    }
+
+    .corner.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+    .corner.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+    .corner.bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+    .corner.br { right: 10px; bottom: 10px; border-width: 0 2px 2px 0; }
+
+    .about-copy { max-width: 580px; }
+
+    .about-copy p {
+      margin: 0;
+      color: #b6b6c7;
+      font-size: 1.18rem;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 33px;
+    }
+
+    .stat-box {
+      min-width: 0;
+      padding: 14px 12px;
+      border: 1px solid var(--border);
+      background: rgba(17, 17, 24, 0.82);
+    }
+
+    .stat-label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 0.63rem; letter-spacing: 0.12em; }
+    .stat-value { display: block; color: var(--green); font-size: 0.72rem; letter-spacing: 0.05em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .skill-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 52px; }
+
+    .skill-meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 9px; }
+    .skill-name { color: var(--text); font-size: 0.76rem; letter-spacing: 0.08em; }
+    .skill-percent { color: var(--cyan); font-size: 0.72rem; }
+
+    .skill-track { height: 5px; overflow: hidden; background: rgba(90, 90, 122, 0.26); }
+    .skill-fill { width: 0; height: 100%; background: linear-gradient(90deg, var(--green), var(--cyan)); box-shadow: 0 0 10px rgba(0, 229, 255, 0.7); }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .project-card {
+      display: flex;
+      min-height: 320px;
+      flex-direction: column;
+      padding: 25px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(0, 229, 255, 0.045), transparent 44%),
+        var(--surface);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .project-card:hover { border-color: rgba(0, 229, 255, 0.68); box-shadow: 0 14px 28px rgba(0, 229, 255, 0.1), inset 0 0 28px rgba(0, 229, 255, 0.025); transform: translateY(-7px); }
+
+    .project-op { color: var(--cyan); font-size: 0.7rem; letter-spacing: 0.12em; }
+    .project-title { margin: 20px 0 11px; font-size: 1.6rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1; }
+    .project-description { margin: 0; color: #9696aa; line-height: 1.6; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .tag { padding: 5px 7px; color: #a7a7b8; border: 1px solid rgba(90, 90, 122, 0.55); background: rgba(10, 10, 15, 0.5); font-size: 0.61rem; letter-spacing: 0.06em; }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 27px;
+    }
+
+    .status { display: inline-flex; align-items: center; gap: 7px; color: var(--green); font-size: 0.64rem; letter-spacing: 0.05em; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 1.45s ease-in-out infinite; }
+    .status.complete { color: var(--cyan); }
+    .status.complete .status-dot { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: none; }
+    .status.progress { color: #f1cf4e; }
+    .status.progress .status-dot { background: #f1cf4e; box-shadow: 0 0 8px #f1cf4e; }
+    @keyframes pulse { 50% { opacity: 0.32; transform: scale(0.68); } }
+
+    .project-link { color: var(--cyan); font-size: 0.68rem; letter-spacing: 0.07em; transition: color 160ms ease, text-shadow 160ms ease; }
+    .project-link:hover, .project-link:focus-visible { color: var(--green); text-shadow: 0 0 9px var(--green); }
+
+    .contact-section { padding-bottom: 136px; }
+    .contact-panel { width: min(100%, 760px); }
+    .terminal-copy { margin: 0 0 27px; color: var(--green); font-size: 0.79rem; letter-spacing: 0.07em; }
+
+    .contact-form { display: grid; gap: 16px; }
+    .form-field { display: grid; gap: 7px; }
+    .form-label { color: var(--muted); font-size: 0.68rem; letter-spacing: 0.1em; }
+
+    .form-input {
+      width: 100%;
+      padding: 13px 14px;
+      color: var(--text);
+      outline: none;
+      border: 1px solid var(--border);
+      border-radius: 0;
+      background: rgba(17, 17, 24, 0.9);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    textarea.form-input { min-height: 125px; resize: vertical; }
+    .form-input:focus { border-color: var(--cyan); background: rgba(0, 229, 255, 0.035); box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08), 0 0 17px rgba(0, 229, 255, 0.1); }
+    .form-input::placeholder { color: #4b4b63; }
+
+    .contact-form .hud-button { justify-self: start; margin-top: 5px; }
+    .form-status { min-height: 1.2rem; margin: 6px 0 0; color: var(--green); font-family: var(--mono); font-size: 0.73rem; letter-spacing: 0.04em; }
+
+    .boot-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      padding: 30px;
+      background: #000;
+      transition: opacity 500ms ease, visibility 500ms ease;
+      place-items: center;
+    }
+
+    .boot-screen.exit { opacity: 0; visibility: hidden; }
+    .boot-terminal { width: min(760px, 100%); }
+    .boot-kicker { display: block; margin-bottom: 19px; color: var(--muted); font-size: 0.68rem; letter-spacing: 0.13em; }
+    .boot-lines { min-height: 9rem; color: var(--green); font-size: clamp(0.72rem, 2vw, 0.91rem); letter-spacing: 0.035em; line-height: 1.9; }
+    .boot-line { display: block; }
+    .boot-line:last-child { color: var(--cyan); text-shadow: 0 0 12px rgba(0, 229, 255, 0.45); }
+
+    .js .hero-content { opacity: 0; transform: translateY(18px); }
+    .js .reveal-section { opacity: 0; transform: translateY(42px); }
+    .js .about-photo { opacity: 0; transform: translateX(-54px); }
+    .js .about-copy { opacity: 0; transform: translateX(54px); }
+    .js .project-card { opacity: 0; transform: translateY(28px) scale(0.96); }
+
+    @media (max-width: 760px) {
+      .section { width: min(100% - 36px, 1120px); padding: 88px 0; }
+      .hero { padding: 38px 18px; }
+      .hero-frame { inset: 12px; }
+      .hero-frame::before { left: 26px; }
+      .hero-frame::after { right: 26px; }
+      .about-grid, .skill-grid, .project-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 30px; }
+      .photo-frame { min-height: 285px; }
+      .project-card { min-height: 275px; }
+      .contact-section { padding-bottom: 95px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+      .js .hero-content, .js .reveal-section, .js .about-photo, .js .about-copy, .js .project-card { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="boot-screen" id="bootScreen" aria-live="polite">
+    <div class="boot-terminal">
+      <span class="boot-kicker">MW2 // SECURE TERMINAL v4.7</span>
+      <div class="boot-lines" id="bootLines"></div>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="hero" id="hero" aria-labelledby="operatorName">
+      <div id="particles-js" aria-hidden="true"></div>
+      <div class="hero-frame" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">// OPERATOR_ID</p>
+        <h1 class="operator-name" id="operatorName" data-text="[YOUR_NAME]">[YOUR_NAME]</h1>
+        <p class="role-line"><span id="typedRole"></span><span class="typing-cursor" aria-hidden="true"></span></p>
+        <p class="location">[YOUR_LOCATION]</p>
+        <a class="hud-button" href="#about">[ ACCESS_PROFILE ]</a>
+      </div>
+    </section>
+
+    <section class="section reveal-section" id="about" aria-labelledby="aboutTitle">
+      <h2 class="section-label" id="aboutTitle">// OPERATOR_PROFILE</h2>
+      <div class="about-grid">
+        <div class="photo-frame about-photo" aria-label="Photo placeholder">
+          <span class="corner tl" aria-hidden="true"></span>
+          <span class="corner tr" aria-hidden="true"></span>
+          <span class="corner bl" aria-hidden="true"></span>
+          <span class="corner br" aria-hidden="true"></span>
+          <span class="photo-placeholder">[YOUR_PHOTO]</span>
+        </div>
+        <div class="about-copy">
+          <p>[SHORT_BIO]</p>
+          <div class="stat-grid" aria-label="Operator statistics">
+            <div class="stat-box"><span class="stat-label">SEMESTER</span><span class="stat-value">[SEMESTER]</span></div>
+            <div class="stat-box"><span class="stat-label">BRANCH</span><span class="stat-value">[BRANCH]</span></div>
+            <div class="stat-box"><span class="stat-label">BASE</span><span class="stat-value">[BASE]</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal-section" id="skills" aria-labelledby="skillsTitle">
+      <h2 class="section-label" id="skillsTitle">// LOADOUT</h2>
+      <div class="skill-grid" id="skillGrid">
+        <div class="skill"><div class="skill-meta"><span class="skill-name">C PROGRAMMING</span><span class="skill-percent">75%</span></div><div class="skill-track"><div class="skill-fill" data-value="75"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">EMBEDDED C</span><span class="skill-percent">60%</span></div><div class="skill-track"><div class="skill-fill" data-value="60"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">VERILOG HDL</span><span class="skill-percent">50%</span></div><div class="skill-track"><div class="skill-fill" data-value="50"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">FPGA DESIGN</span><span class="skill-percent">45%</span></div><div class="skill-track"><div class="skill-fill" data-value="45"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">PYTHON</span><span class="skill-percent">55%</span></div><div class="skill-track"><div class="skill-fill" data-value="55"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">GIT &amp; LINUX</span><span class="skill-percent">70%</span></div><div class="skill-track"><div class="skill-fill" data-value="70"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">STM32 / HAL</span><span class="skill-percent">40%</span></div><div class="skill-track"><div class="skill-fill" data-value="40"></div></div></div>
+        <div class="skill"><div class="skill-meta"><span class="skill-name">FREERTOS</span><span class="skill-percent">35%</span></div><div class="skill-track"><div class="skill-fill" data-value="35"></div></div></div>
+      </div>
+    </section>
+
+    <section class="section reveal-section" id="projects" aria-labelledby="projectsTitle">
+      <h2 class="section-label" id="projectsTitle">// FIELD_OPERATIONS</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <span class="project-op">OP_01</span>
+          <h3 class="project-title">PROJECT ALPHA</h3>
+          <p class="project-description">[PLACEHOLDER_DESCRIPTION_FOR_PROJECT_ALPHA]</p>
+          <div class="tags"><span class="tag">C</span><span class="tag">STM32</span><span class="tag">UART</span></div>
+          <footer class="project-footer"><span class="status"><span class="status-dot"></span>ACTIVE</span><a class="project-link" href="#contact">[ VIEW → ]</a></footer>
+        </article>
+        <article class="project-card">
+          <span class="project-op">OP_02</span>
+          <h3 class="project-title">PROJECT BRAVO</h3>
+          <p class="project-description">[PLACEHOLDER_DESCRIPTION_FOR_PROJECT_BRAVO]</p>
+          <div class="tags"><span class="tag">VERILOG</span><span class="tag">FPGA</span><span class="tag">VIVADO</span></div>
+          <footer class="project-footer"><span class="status complete"><span class="status-dot"></span>COMPLETE</span><a class="project-link" href="#contact">[ VIEW → ]</a></footer>
+        </article>
+        <article class="project-card">
+          <span class="project-op">OP_03</span>
+          <h3 class="project-title">PROJECT CHARLIE</h3>
+          <p class="project-description">[PLACEHOLDER_DESCRIPTION_FOR_PROJECT_CHARLIE]</p>
+          <div class="tags"><span class="tag">PYTHON</span><span class="tag">IOT</span><span class="tag">RTOS</span></div>
+          <footer class="project-footer"><span class="status progress"><span class="status-dot"></span>IN_PROGRESS</span><a class="project-link" href="#contact">[ VIEW → ]</a></footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section reveal-section" id="contact" aria-labelledby="contactTitle">
+      <h2 class="section-label" id="contactTitle">// ESTABLISH_COMMS</h2>
+      <div class="contact-panel">
+        <p class="terminal-copy">&gt; TRANSMISSION CHANNEL OPEN. STATE YOUR MISSION.</p>
+        <form class="contact-form" id="contactForm">
+          <label class="form-field"><span class="form-label">NAME</span><input class="form-input" name="name" type="text" autocomplete="name" placeholder="ENTER DESIGNATION" required></label>
+          <label class="form-field"><span class="form-label">EMAIL</span><input class="form-input" name="email" type="email" autocomplete="email" placeholder="ENTER SECURE ADDRESS" required></label>
+          <label class="form-field"><span class="form-label">MESSAGE</span><textarea class="form-input" name="message" placeholder="TYPE TRANSMISSION" required></textarea></label>
+          <button class="hud-button" type="submit">[ TRANSMIT ]</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      document.documentElement.classList.add("js");
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function startParticles() {
+        if (!window.tsParticles || reducedMotion) return;
+        window.tsParticles.load("particles-js", {
+          fpsLimit: 60,
+          fullScreen: { enable: false },
+          background: { color: "transparent" },
+          interactivity: {
+            events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+            modes: { repulse: { distance: 90, duration: 0.35 } }
+          },
+          particles: {
+            color: { value: "#00e5ff" },
+            links: { color: "#00e5ff", distance: 145, enable: true, opacity: 0.16, width: 1 },
+            move: { enable: true, speed: 0.55, direction: "none", outModes: { default: "out" }, random: false, straight: false },
+            number: { density: { enable: true, area: 900 }, value: 62 },
+            opacity: { value: { min: 0.14, max: 0.52 } },
+            shape: { type: "circle" },
+            size: { value: { min: 1, max: 2.4 } }
+          },
+          detectRetina: true
+        });
+      }
+
+      function typeRoles() {
+        var target = document.getElementById("typedRole");
+        var roles = ["ELECTRONICS ENGINEER", "EMBEDDED SYSTEMS", "VLSI DESIGNER", "EIE STUDENT"];
+        var roleIndex = 0;
+        var characterIndex = 0;
+        var deleting = false;
+
+        function tick() {
+          var current = roles[roleIndex];
+          target.textContent = deleting ? current.slice(0, characterIndex--) : current.slice(0, characterIndex++);
+          var delay = deleting ? 38 : 68;
+
+          if (!deleting && characterIndex > current.length) {
+            deleting = true;
+            delay = 1450;
+          } else if (deleting && characterIndex < 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            characterIndex = 0;
+            delay = 260;
+          }
+          window.setTimeout(tick, delay);
+        }
+        tick();
+      }
+
+      function initAnimations() {
+        if (!window.gsap || reducedMotion) return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".reveal-section").forEach(function (section) {
+          gsap.to(section, {
+            opacity: 1,
+            y: 0,
+            duration: 0.58,
+            ease: "power2.out",
+            scrollTrigger: { trigger: section, start: "top 82%", toggleActions: "restart reverse restart reverse" }
+          });
+        });
+
+        gsap.to(".about-photo", {
+          opacity: 1, x: 0, duration: 0.65, ease: "power3.out",
+          scrollTrigger: { trigger: "#about", start: "top 72%", toggleActions: "restart reverse restart reverse" }
+        });
+        gsap.to(".about-copy", {
+          opacity: 1, x: 0, duration: 0.65, ease: "power3.out",
+          scrollTrigger: { trigger: "#about", start: "top 72%", toggleActions: "restart reverse restart reverse" }
+        });
+        gsap.to(".project-card", {
+          opacity: 1, y: 0, scale: 1, duration: 0.52, stagger: 0.12, ease: "power2.out",
+          scrollTrigger: { trigger: "#projects", start: "top 73%", toggleActions: "restart reverse restart reverse" }
+        });
+
+        ScrollTrigger.create({
+          trigger: "#skills",
+          start: "top 75%",
+          onEnter: fillSkills,
+          onEnterBack: fillSkills,
+          onLeaveBack: resetSkills
+        });
+      }
+
+      function fillSkills() {
+        if (!window.gsap) return;
+        gsap.to(".skill-fill", { width: function (i, element) { return element.dataset.value + "%"; }, duration: 0.85, stagger: 0.06, ease: "power2.out", overwrite: true });
+      }
+
+      function resetSkills() {
+        if (!window.gsap) return;
+        gsap.set(".skill-fill", { width: 0 });
+      }
+
+      function setupForm() {
+        var form = document.getElementById("contactForm");
+        var status = document.getElementById("formStatus");
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          status.textContent = "> TRANSMISSION RECEIVED. STANDING BY.";
+          form.reset();
+        });
+      }
+
+      function playBootSequence() {
+        var bootScreen = document.getElementById("bootScreen");
+        var bootLines = document.getElementById("bootLines");
+        var messages = [
+          "> SYSTEM BOOT SEQUENCE INITIATED...",
+          "> LOADING OPERATOR PROFILE...",
+          "> SCANNING BIOMETRIC DATA...",
+          "> AUTHENTICATION: GRANTED",
+          "> WELCOME, OPERATOR."
+        ];
+
+        if (reducedMotion) {
+          messages.forEach(function (message) { var line = document.createElement("span"); line.className = "boot-line"; line.textContent = message; bootLines.appendChild(line); });
+          window.setTimeout(revealHero, 450);
+          return;
+        }
+
+        function typeLine(message, index) {
+          return new Promise(function (resolve) {
+            var line = document.createElement("span");
+            line.className = "boot-line";
+            bootLines.appendChild(line);
+            var position = 0;
+            var timer = window.setInterval(function () {
+              line.textContent += message.charAt(position);
+              position += 1;
+              if (position >= message.length) {
+                window.clearInterval(timer);
+                window.setTimeout(resolve, index === messages.length - 1 ? 520 : 115);
+              }
+            }, 13);
+          });
+        }
+
+        messages.reduce(function (chain, message, index) {
+          return chain.then(function () { return typeLine(message, index); });
+        }, Promise.resolve()).then(revealHero);
+
+        function revealHero() {
+          bootScreen.classList.add("exit");
+          if (window.gsap && !reducedMotion) {
+            gsap.to(".hero-content", { opacity: 1, y: 0, duration: 0.68, ease: "power3.out" });
+          } else {
+            document.querySelector(".hero-content").style.cssText = "opacity:1;transform:none";
+          }
+          window.setTimeout(function () { bootScreen.remove(); }, 550);
+        }
+      }
+
+      startParticles();
+      typeRoles();
+      initAnimations();
+      setupForm();
+      window.addEventListener("load", playBootSequence, { once: true });
+    }());
+  </script>
+</body>
+</html>
